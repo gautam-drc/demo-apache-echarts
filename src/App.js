@@ -1,7 +1,5 @@
 import React from "react";
 import ReactECharts from "echarts-for-react";
-import { color } from "echarts";
-
 const kpis = [
   { title: "Daily Active Learners", value: 459, change: "+8%" },
   { title: "Coding Hours (7d)", value: 934, change: "+12%" },
