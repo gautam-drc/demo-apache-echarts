@@ -1,5 +1,6 @@
 import React from "react";
 import ReactECharts from "echarts-for-react";
+import { color } from "echarts";
 
 const kpis = [
   { title: "Daily Active Learners", value: 459, change: "+8%" },
@@ -121,16 +122,39 @@ const heatmapOption = {
   tooltip: { position: "top" },
   xAxis: { type: "category", data: days },
   yAxis: { type: "category", data: hours },
-  visualMap: { min: 0, max: 100, calculable: true, orient: "horizontal", left: "center" },
+  visualMap: { 
+    min: 0, 
+    max: 100, 
+    calculable: true, 
+    orient: "horizontal", 
+    left: "center",
+    inRange: {
+      color: ["#e0f2fe", "#3b82f6", "#1e3a8a"]  
+      // light blue → medium blue → dark blue
+    }
+  },
   series: [
     {
       type: "heatmap",
       data,
       label: { show: false },
-      emphasis: { itemStyle: { shadowBlur: 10, shadowColor: "rgba(0,0,0,0.5)" } },
-    },
-  ],
+      emphasis: { 
+        // itemStyle: { 
+        //   shadowBlur: 0, 
+        //   shadowColor: "rgba(0,0,0,0)" 
+        // } 
+      },
+      itemStyle: {
+        borderWidth: 10,
+        borderRadius: 10,
+        borderType: "solid",
+        borderColor: "#ffffff"
+      }
+    }
+  ]
 };
+
+
 
 // Bar Chart (Peak Hours)
 const peakOption = {
